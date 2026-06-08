@@ -1,0 +1,219 @@
+@use './variables.scss' as *;
+
+// Responsive design mixins
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: $breakpoint-2xl) {
+    @content;
+  }
+}
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Grid mixins
+@mixin grid($columns: 12, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Position mixins
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// Typography mixins
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin line-clamp($lines: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Shadow mixins
+@mixin shadow-sm {
+  box-shadow: $shadow-sm;
+}
+
+@mixin shadow-md {
+  box-shadow: $shadow-md;
+}
+
+@mixin shadow-lg {
+  box-shadow: $shadow-lg;
+}
+
+@mixin shadow-xl {
+  box-shadow: $shadow-xl;
+}
+
+// Button mixins
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  font-weight: 500;
+  font-size: $font-size-base;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-decoration: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background-color: $primary;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: #059669;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #047857;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background-color: $gray-200;
+  color: $gray-700;
+
+  &:hover:not(:disabled) {
+    background-color: $gray-300;
+  }
+
+  &:active:not(:disabled) {
+    background-color: $gray-400;
+  }
+}
+
+@mixin button-danger {
+  @include button-base;
+  background-color: $danger;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: #dc2626;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #b91c1c;
+  }
+}
+
+// Form mixins
+@mixin form-group {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: 500;
+    color: $gray-700;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+  }
+}
+
+// Card mixins
+@mixin card {
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-lg;
+  overflow: hidden;
+}
+
+// Hover effect mixins
+@mixin hover-lift {
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Loading animation
+@mixin spinner {
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Gradient
+@mixin gradient($color1, $color2, $direction: 135deg) {
+  background: linear-gradient($direction, $color1, $color2);
+}
