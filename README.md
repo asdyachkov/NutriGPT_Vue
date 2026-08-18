@@ -219,4 +219,4 @@ docker run -p 5173:80 nutrigpt-frontend
 
 Проект разработан в рамках дипломной работы.
 
-— _NutriGPT, 2026_
+— Дьячков Степан, _NutriGPT, 2026_
